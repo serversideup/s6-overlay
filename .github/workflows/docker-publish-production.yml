@@ -1,0 +1,65 @@
+name: Docker Publish (Production Images)
+
+on:
+  # When changes are pushed to the "main" branch, run it
+  push:
+    branches:
+      - main
+
+  # Run every week at 0800 UTC to update the images
+  schedule:
+    - cron: '0 8 * * 0'
+
+jobs:
+  push:
+    runs-on: ubuntu-20.04
+
+    # Configure our deployment strategy. Order is important here and we want it to go: CLI < FPM < FPM-NGINX
+    strategy:
+      # We want to limit the number of jobs to the number of versions that we're offering (since we want the dependency order to be built correctly)
+      max-parallel: 2
+      # Set our base image and versions here
+      matrix:
+        linux-flavor:
+          - ubuntu
+        version: 
+          - "20.04"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Build and tag image
+        run: docker build --pull s6-overlay/${{ matrix.linux-flavor }}/${{ matrix.version }}/. --tag docker-baseimage-s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}
+
+      - name: Push version image to DockerHub
+        run: docker push docker-baseimage-s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}
+  
+  update_container_readme:
+    runs-on: ubuntu-latest
+    name: Push README to Docker Hub
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+      - name: push README to Dockerhub
+        uses: christian-korneck/update-container-description-action@v1
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_HUB_README_USERNAME }}
+          DOCKER_PASS: ${{ secrets.DOCKER_HUB_README_PASSWORD }}
+        with:
+          destination_container_repo: docker-baseimage-s6-overlay
+          provider: dockerhub
+          short_description: 'PHP images optimized for Laravel, WordPress, and more!'
+          readme_file: 'README.md'
+
+  trigger_downstream_jobs:
+    needs: push
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Trigger downstream builds
+        run: curl --fail --output "/dev/null" --silent --show-error -X POST -F token=${{ secrets.DOWNSTREAM_BUILD_TOKEN }} -F ref=$GITHUB_REF ${{ secrets.DOWNSTREAM_BUILD_WEBHOOK_ENDPOINT }}
