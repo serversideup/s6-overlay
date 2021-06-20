@@ -36,7 +36,7 @@ jobs:
 
 
       - name: Build and tag image
-        run: docker build --pull php/${{ matrix.linux-flavor }}/${{ matrix.version }}/. --tag docker-baseimage-s6-overlay:beta-${{ matrix.linux-flavor }}-${{ matrix.version }}
+        run: docker build --pull php/${{ matrix.linux-flavor }}/${{ matrix.version }}/. --tag serversideup/docker-baseimage-s6-overlay:beta-${{ matrix.linux-flavor }}-${{ matrix.version }}
 
       - name: Push version image to DockerHub
-        run: docker push docker-baseimage-s6-overlay:beta-${{ matrix.linux-flavor }}-${{ matrix.version }}
+        run: docker push serversideup/docker-baseimage-s6-overlay:beta-${{ matrix.linux-flavor }}-${{ matrix.version }}
