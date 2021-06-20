@@ -52,7 +52,7 @@ jobs:
           DOCKER_USER: ${{ secrets.DOCKER_HUB_README_USERNAME }}
           DOCKER_PASS: ${{ secrets.DOCKER_HUB_README_PASSWORD }}
         with:
-          destination_container_repo: docker-baseimage-s6-overlay
+          destination_container_repo: serversideup/docker-baseimage-s6-overlay
           provider: dockerhub
           short_description: 'Base image for projects that need S6 Overlay'
           readme_file: 'README.md'
