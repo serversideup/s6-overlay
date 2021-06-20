@@ -54,5 +54,5 @@ jobs:
         with:
           destination_container_repo: docker-baseimage-s6-overlay
           provider: dockerhub
-          short_description: 'PHP images optimized for Laravel, WordPress, and more!'
+          short_description: 'Base image for projects that need S6 Overlay'
           readme_file: 'README.md'
