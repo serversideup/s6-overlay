@@ -42,7 +42,7 @@ serversideup/docker-baseimage-s6-overlay-ubuntu:20.04
 We're taking the extra effort to open source as much as we can. Not only could this potentially help someone learn a little bit of Docker, but it makes it a *heck of a lot* easier for us to work with you on new open source ideas.
 
 # Submitting issues and pull requests
-Since there are a lot of dependencies on these images, please understand that it can make it complicated on mergine your pull request.
+Since there are a lot of dependencies on these images, please understand that it can make it complicated on merging your pull request.
 
 We'd love to have your help, but it might be best to explain your intentions first before contributing.
 
