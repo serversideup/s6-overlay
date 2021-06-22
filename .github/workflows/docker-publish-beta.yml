@@ -8,7 +8,7 @@ on:
 
   # Run every week at 0800 UTC to update the images
   schedule:
-    - cron: '0 8 * * 7'
+    - cron: '0 8 * * 6'
 
 jobs:
   push:
