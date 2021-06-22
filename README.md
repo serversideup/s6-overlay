@@ -23,16 +23,16 @@ This is a list of the docker images this repository creates:
 
 | ⚙️ Linux Flavor | 🎁 Version |
 |------------------|--------------|
-| Ubuntu        | [20.04](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=ubuntu-20.04)   |
+| Ubuntu        | [20.04](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=20.04)   |
 
 ### Usage
 Simply use this image name pattern in any of your projects:
 ```sh
-serversideup/docker-baseimage-s6-overlay-ubuntu:{{linux-flavor}}-{{version}}
+serversideup/docker-baseimage-s6-overlay-ubuntu:{{version}}
 ```
 For example... If I wanted to run **Ubuntu 20.04**, I would use this image:
 ```sh
-serversideup/docker-baseimage-s6-overlay-ubuntu:ubuntu-20.04
+serversideup/docker-baseimage-s6-overlay-ubuntu:20.04
 ```
 
 ### Updates
