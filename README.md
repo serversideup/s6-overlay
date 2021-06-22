@@ -1,30 +1,38 @@
 <p align="center">
-		<img src="https://raw.githubusercontent.com/serversideup/docker-baseimage-s6-overlay/main/.github/header.png" width="1200" alt="Docker Images Logo">
+		<img src="https://raw.githubusercontent.com/serversideup/docker-baseimage-s6-overlay-ubuntu/main/.github/header.png" width="1200" alt="Docker Images Logo">
 </p>
 <p align="center">
-	<a href="https://actions-badge.atrox.dev/serversideup/docker-baseimage-s6-overlay/goto?ref=main"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fserversideup%2Fdocker-baseimage-s6-overlay%2Fbadge%3Fref%3Dmain&style=flat" /></a>
-	<a href="https://github.com/serversideup/docker-baseimage-s6-overlay/blob/main/LICENSE" target="_blank"><img src="https://badgen.net/github/license/serversideup/docker-baseimage-s6-overlay" alt="License"></a>
+	<a href="https://actions-badge.atrox.dev/serversideup/docker-baseimage-s6-overlay-ubuntu/goto?ref=main"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fserversideup%2Fdocker-baseimage-s6-overlay-ubuntu%2Fbadge%3Fref%3Dmain&style=flat" /></a>
+	<a href="https://github.com/serversideup/docker-baseimage-s6-overlay-ubuntu/blob/main/LICENSE" target="_blank"><img src="https://badgen.net/github/license/serversideup/docker-baseimage-s6-overlay-ubuntu" alt="License"></a>
 	<a href="https://github.com/sponsors/serversideup"><img src="https://badgen.net/badge/icon/Support%20Us?label=GitHub%20Sponsors&color=orange" alt="Support us"></a>
 </p>
 
 # 👉 This is a work in progress
 Stay tuned as we keep adding more things 😃
 
+# What is S6 Overlay?
+[S6 Overlay](https://github.com/just-containers/s6-overlay) is a process supervisor that allows you to make any app disposable and repeatable within one container, even if you need two processes to run it (like PHP).
+
+Instead of running [Supervisor](https://github.com/Supervisor/supervisor) inside of your container, S6 Overlay was built specifically for the lifecycle of containers -- giving you a more accurate way of bringing containers down and monitoring their health.
+
+# Aren't you only supposed to run one process per container?
+In a perfect world, yes. But this isn't a perfect world. See a great explanation called ["The Docker Way" by the S6 Overlay](https://github.com/just-containers/s6-overlay#the-docker-way) team for an excellent explaination.
+
 # Available Docker Images
 This is a list of the docker images this repository creates:
 
 | ⚙️ Linux Flavor | 🎁 Version |
 |------------------|--------------|
-| Ubuntu        | [20.04](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay/tags?page=1&ordering=last_updated&name=ubuntu-20.04)   |
+| Ubuntu        | [20.04](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=ubuntu-20.04)   |
 
 ### Usage
 Simply use this image name pattern in any of your projects:
 ```sh
-serversideup/docker-baseimage-s6-overlay:{{linux-flavor}}-{{version}}
+serversideup/docker-baseimage-s6-overlay-ubuntu:{{linux-flavor}}-{{version}}
 ```
 For example... If I wanted to run **Ubuntu 20.04**, I would use this image:
 ```sh
-serversideup/docker-baseimage-s6-overlay:ubuntu-20.04
+serversideup/docker-baseimage-s6-overlay-ubuntu:ubuntu-20.04
 ```
 
 ### Updates
