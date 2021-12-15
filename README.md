@@ -4,6 +4,8 @@
 <p align="center">
 	<a href="https://actions-badge.atrox.dev/serversideup/docker-baseimage-s6-overlay-ubuntu/goto?ref=main"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fserversideup%2Fdocker-baseimage-s6-overlay-ubuntu%2Fbadge%3Fref%3Dmain&style=flat" /></a>
 	<a href="https://github.com/serversideup/docker-baseimage-s6-overlay-ubuntu/blob/main/LICENSE" target="_blank"><img src="https://badgen.net/github/license/serversideup/docker-baseimage-s6-overlay-ubuntu" alt="License"></a>
+	<a href="https://community.serversideup.net"><img alt="Discourse users" src="https://img.shields.io/discourse/users?color=blue&server=https%3A%2F%2Fcommunity.serversideup.net"></a>
+  <a href="https://serversideup.net/discord"><img alt="Discord" src="https://img.shields.io/discord/910287105714954251?color=blueviolet"></a>
 	<a href="https://github.com/sponsors/serversideup"><img src="https://badgen.net/badge/icon/Support%20Us?label=GitHub%20Sponsors&color=orange" alt="Support us"></a>
 </p>
 
