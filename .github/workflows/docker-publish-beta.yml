@@ -6,9 +6,9 @@ on:
     branches:
       - dev
 
-  # # Run every week at 0800 UTC to update the images
-  # schedule:
-  #   - cron: '0 8 * * 6'
+  # Run every week at 0800 UTC to update the images
+  schedule:
+    - cron: '0 8 * * 6'
 
 jobs:
   push:
@@ -38,7 +38,7 @@ jobs:
 
 
       - name: Build and tag image
-        run: docker build --pull . --tag serversideup/docker-baseimage-s6-overlay-ubuntu:${{ matrix.version }}-beta
+        run: docker build --pull . --tag serversideup/docker-baseimage-s6-overlay-ubuntu:beta-${{ matrix.version }}
 
       - name: Push version image to DockerHub
-        run: docker push serversideup/docker-baseimage-s6-overlay-ubuntu:${{ matrix.version }}-beta
+        run: docker push serversideup/docker-baseimage-s6-overlay-ubuntu:beta-${{ matrix.version }}
