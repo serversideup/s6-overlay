@@ -9,9 +9,6 @@
 	<a href="https://github.com/sponsors/serversideup"><img src="https://badgen.net/badge/icon/Support%20Us?label=GitHub%20Sponsors&color=orange" alt="Support us"></a>
 </p>
 
-# 👉 This is a work in progress
-Stay tuned as we keep adding more things 😃
-
 # What is S6 Overlay?
 [S6 Overlay](https://github.com/just-containers/s6-overlay) is a process supervisor that allows you to make any app disposable and repeatable within one container, even if you need two processes to run it (like PHP).
 
