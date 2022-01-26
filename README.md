@@ -34,7 +34,7 @@ This is a list of the docker images this repository creates:
 
 | ⚙️ Linux Flavor | 🎁 Version |
 |------------------|--------------|
-| Ubuntu        | [20.04](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=20.04), [beta-20.04](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=beta-20.04)   |
+| Ubuntu        | [20.04](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=20.04), [beta-20.04](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=beta-20.04), [edge-{{PR number}}](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=edge)  |
 
 
 # What is S6 Overlay?
