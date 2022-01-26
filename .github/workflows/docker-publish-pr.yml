@@ -1,8 +1,7 @@
-name: Docker Publish (Beta Images)
+name: Docker Publish (Edge - Pull Request)
 
 on:
   pull_request:
-
 
 env:
   PR_NUMBER: ${{ github.event.pull_request.number }}
@@ -10,8 +9,6 @@ env:
 jobs:
   push:
     runs-on: ubuntu-20.04
-
-    # Configure our deployment strategy. Order is important here and we want it to go: CLI < FPM < FPM-NGINX
     strategy:
       # We want to limit the number of jobs to the number of versions that we're offering (since we want the dependency order to be built correctly)
       max-parallel: 2
