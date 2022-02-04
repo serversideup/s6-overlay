@@ -14,8 +14,6 @@ FROM base as source
 ARG DEBIAN_FRONTEND="noninteractive"
 ARG S6_OVERLAY_BUILD_DEP="wget xz-utils"
 ARG S6_OVERLAY_SRC="https://github.com/just-containers/s6-overlay/releases/download"
-ARG S6_OVERLAY_VERSION="3.0.0.2"
-ARG S6_OVERLAY_ARCH="x86_64"
 
 # installation pipeline
 RUN apt-get update \
