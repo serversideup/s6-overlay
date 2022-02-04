@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 LABEL maintainer="@jaydrogers"
 
 # set version for s6 overlay
-ARG S6_OVERLAY_VERSION="3.0.0.0-1"
+ARG S6_OVERLAY_VERSION="3.0.0.2"
 ARG S6_OVERLAY_ARCH="x86_64"
 
 # Install dependencies
