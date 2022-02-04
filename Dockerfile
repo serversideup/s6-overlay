@@ -2,8 +2,8 @@
 ################################################################################
 
 # base image and platform
-# E.g: FROM --platform=linux/amd64 ubuntu:focal as base
-FROM ubuntu:focal as base
+# E.g: FROM --platform=linux/amd64 ubuntu:20.04 as base
+FROM ubuntu:20.04 as base
 
 ################################################################################
 
