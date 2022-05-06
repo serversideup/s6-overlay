@@ -30,9 +30,11 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-
-      - name: Build and tag image
-        run: docker build --pull . --tag serversideup/docker-baseimage-s6-overlay-ubuntu:edge-${{ env.PR_NUMBER }}-${{ matrix.version }}
-
-      - name: Push version image to DockerHub
-        run: docker push serversideup/docker-baseimage-s6-overlay-ubuntu:edge-${{ env.PR_NUMBER }}-${{ matrix.version }}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          pull: true
+          push: true
+          tags: serversideup/docker-baseimage-s6-overlay-ubuntu:edge-${{ env.PR_NUMBER }}-${{ matrix.version }}
