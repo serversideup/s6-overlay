@@ -80,6 +80,9 @@ If you're shopping for a host, [check out the benchmarks we've ran →](https://
 # About this project
 We're taking the extra effort to open source as much as we can. Not only could this potentially help someone learn a little bit of Docker, but it makes it a *heck of a lot* easier for us to work with you on new open source ideas.
 
+### Special thanks
+- @shinsenter: Thanks for your previous contributions and providing examples to make our images better.
+
 # Submitting issues and pull requests
 Since there are a lot of dependencies on these images, please understand that it can make it complicated on merging your pull request.
 
