@@ -5,6 +5,7 @@ on:
 
 env:
   PR_NUMBER: ${{ github.event.pull_request.number }}
+  DOCKER_BUILDKIT: "1"
 
 jobs:
   push:
