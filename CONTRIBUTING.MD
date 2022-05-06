@@ -12,14 +12,8 @@ docker build -t localhost/docker-baseimage-s6-overlay-ubuntu .
 ```
 The above command will build an image called `localhost/docker-baseimage-s6-overlay-ubuntu`.
 
-#### Inspect images
+#### Inspect & testing images
 This is helpful for inspecting images:
 ```sh
 docker run --rm -it localhost/docker-baseimage-s6-overlay-ubuntu bash
-```
-
-#### Running a test web server:
-This is helpful for testing things out:
-```sh
-docker run --rm localhost/docker-baseimage-s6-overlay-ubuntu
 ```
