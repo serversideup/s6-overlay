@@ -24,6 +24,7 @@ jobs:
           - ubuntu
         version: 
           - "20.04"
+          - "22.04"
 
     steps:
       - uses: actions/checkout@v2
