@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    uses: .github/workflows/workflow-docker-publish.yml
+    uses: .github/workflows/workflow-docker-publish.yml@dev
     with:
       tag-prefix: 'beta-'
     secrets: inherit
