@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 LABEL maintainer="@jaydrogers"
 
 # Configure s6 overlay setings
-ARG S6_SRC_DEP="xz-utils wget"
+ARG S6_SRC_DEP="xz-utils wget ca-certificates"
 ARG S6_SRC_URL="https://github.com/just-containers/s6-overlay/releases/download"
 ARG S6_VERSION="v3.1.0.1"
 
@@ -29,7 +29,7 @@ RUN mkdir -p $S6_DIR; \
     esac; \
     untar (){ \
         echo "⏬ Downloading $1"; \
-        wget -O- $1 | tar Jxp -C /; \
+        wget --no-check-certificate -O- $1 | tar Jxp -C /; \
     }; \
     \
     echo "⬇️ Downloading s6 overlay:${S6_ARCH}-${S6_VERSION} for ${SYS_ARCH}" \
