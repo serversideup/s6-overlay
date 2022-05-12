@@ -1,0 +1,20 @@
+name: Docker Publish (Beta Images)
+
+on:
+  # When changes are pushed to the "dev" branch, run it
+  push:
+    branches:
+      - dev
+
+  # Run every week at 0800 UTC to update the images
+  schedule:
+    - cron: '0 8 * * 6'
+
+jobs:
+  build:
+    uses: .github/workflows/workflow-docker-publish.yml
+    with:
+      tag-prefix: 'beta-'
+    secrets:
+      envPAT: inherit
+    
