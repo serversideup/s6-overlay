@@ -29,7 +29,7 @@ RUN mkdir -p $S6_DIR; \
     esac; \
     untar (){ \
         echo "⏬ Downloading $1"; \
-        wget --no-check-certificate -O- $1 | tar Jxp -C /; \
+        wget -O- $1 | tar Jxp -C /; \
     }; \
     \
     echo "⬇️ Downloading s6 overlay:${S6_ARCH}-${S6_VERSION} for ${SYS_ARCH}" \
