@@ -1,0 +1,14 @@
+name: Docker Publish (Edge - Pull Request)
+
+on:
+  pull_request:
+
+env:
+  PR_NUMBER: ${{ github.event.pull_request.number }}
+
+jobs:
+  build:
+    uses: ./.github/workflows/workflow-docker-publish.yml
+    with:
+      tag-prefix: 'edge-${{ env.PR_NUMBER }}-'
+    secrets: inherit
