@@ -39,7 +39,4 @@ RUN mkdir -p $S6_DIR; \
         && untar ${S6_SRC_URL}/${S6_VERSION}/s6-overlay-${S6_ARCH}.tar.xz \
         && untar ${S6_SRC_URL}/${S6_VERSION}/syslogd-overlay-noarch.tar.xz
 
-# Ensure the S6 directorys are executable
-RUN chmod -R +x /etc/cont-init.d /etc/services.d
-
 ENTRYPOINT ["/init"]
