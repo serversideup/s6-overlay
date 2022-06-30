@@ -11,7 +11,8 @@ ARG S6_SRC_URL="https://github.com/just-containers/s6-overlay/releases/download"
 ARG S6_VERSION="v3.1.1.0"
 
 # Set environment variables
-ENV DEBIAN_FRONTEND="noninteractive"
+ENV DEBIAN_FRONTEND="noninteractive" \
+    S6_KEEP_ENV=1
 
 # Install S6 overlay
 RUN mkdir -p $S6_DIR; \
