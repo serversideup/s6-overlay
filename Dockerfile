@@ -8,7 +8,7 @@ LABEL maintainer="@jaydrogers"
 # Configure s6 overlay setings
 ARG S6_SRC_DEP="xz-utils wget"
 ARG S6_SRC_URL="https://github.com/just-containers/s6-overlay/releases/download"
-ARG S6_VERSION="v3.1.0.1"
+ARG S6_VERSION="v3.1.1.0"
 
 # Set environment variables
 ENV DEBIAN_FRONTEND="noninteractive"
