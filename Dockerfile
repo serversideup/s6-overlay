@@ -36,7 +36,6 @@ RUN mkdir -p $S6_DIR; \
     \
     echo "⬇️ Downloading s6 overlay:${S6_ARCH}-${S6_VERSION} for ${SYS_ARCH}" \
         && untar ${S6_SRC_URL}/${S6_VERSION}/s6-overlay-noarch.tar.xz \
-        && untar ${S6_SRC_URL}/${S6_VERSION}/s6-overlay-${S6_ARCH}.tar.xz \
-        && untar ${S6_SRC_URL}/${S6_VERSION}/syslogd-overlay-noarch.tar.xz
+        && untar ${S6_SRC_URL}/${S6_VERSION}/s6-overlay-${S6_ARCH}.tar.xz
 
 ENTRYPOINT ["/init"]
