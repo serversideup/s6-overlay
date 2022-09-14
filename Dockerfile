@@ -1,6 +1,6 @@
 # Special thanks to @shinsenter for teaching me cool things with Docker & Bash
 
-ARG BASE_OS_IMAGE=ubuntu:20.04
+ARG BASE_OS_IMAGE=ubuntu:22.04
 
 FROM ${BASE_OS_IMAGE}
 LABEL maintainer="@jaydrogers"
