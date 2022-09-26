@@ -1,12 +1,12 @@
 <p align="center">
-		<img src="https://raw.githubusercontent.com/serversideup/docker-baseimage-s6-overlay-ubuntu/main/.github/header.png" width="1200" alt="Docker Images Logo">
+		<img src="https://raw.githubusercontent.com/serversideup/s6-overlay/main/.github/header.png" width="1200" alt="Docker Images Logo">
 </p>
 <p align="center">
-	<a href="https://actions-badge.atrox.dev/serversideup/docker-baseimage-s6-overlay-ubuntu/goto?ref=main"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fserversideup%2Fdocker-baseimage-s6-overlay-ubuntu%2Fbadge%3Fref%3Dmain&style=flat" /></a>
-	<a href="https://github.com/serversideup/docker-baseimage-s6-overlay-ubuntu/blob/main/LICENSE" target="_blank"><img src="https://badgen.net/github/license/serversideup/docker-baseimage-s6-overlay-ubuntu" alt="License"></a>
+	<a href="https://actions-badge.atrox.dev/serversideup/s6-overlay/goto?ref=main"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fserversideup%2Fs6-overlay%2Fbadge%3Fref%3Dmain&style=flat" /></a>
+	<a href="https://github.com/serversideup/s6-overlay/blob/main/LICENSE" target="_blank"><img src="https://badgen.net/github/license/serversideup/s6-overlay" alt="License"></a>
 	<a href="https://github.com/sponsors/serversideup"><img src="https://badgen.net/badge/icon/Support%20Us?label=GitHub%20Sponsors&color=orange" alt="Support us"></a>
   <br />
-  <a href="https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/serversideup/docker-baseimage-s6-overlay-ubuntu"></a>
+  <a href="https://hub.docker.com/r/serversideup/s6-overlay/"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/serversideup/s6-overlay"></a>
   <a href="https://community.serversideup.net"><img alt="Discourse users" src="https://img.shields.io/discourse/users?color=blue&server=https%3A%2F%2Fcommunity.serversideup.net"></a>
   <a href="https://serversideup.net/discord"><img alt="Discord" src="https://img.shields.io/discord/910287105714954251?color=blueviolet"></a>
 </p>
@@ -39,9 +39,10 @@ All of our software is free an open to the world. None of this can be brought to
 # Available Docker Images
 This is a list of the docker images this repository creates:
 
-| ⚙️ Linux Flavor | 🎁 Version |
+| ⚙️ Operating System | 🎁 Version |
 |------------------|--------------|
-| Ubuntu        | [20.04](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=20.04), [beta-20.04](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=beta-20.04), [edge-{{PR number}}](https://hub.docker.com/r/serversideup/docker-baseimage-s6-overlay-ubuntu/tags?page=1&ordering=last_updated&name=edge)  |
+| Ubuntu 20.04      | [ubuntu-20.04](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=20.04), [beta-ubuntu-20.04](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=beta-20.04), [edge-{{PR number}}](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=edge)  |
+| Ubuntu 22.04      | [ubuntu-22.04](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=22.04), [beta-ubuntu-22.04](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=beta-22.04), [edge-{{PR number}}](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=edge)  |
 
 
 # What is S6 Overlay?
@@ -55,11 +56,11 @@ In a perfect world, yes. But this isn't a perfect world. See a great explanation
 ### Usage
 Simply use this image name pattern in any of your projects:
 ```sh
-serversideup/docker-baseimage-s6-overlay-ubuntu:{{version}}
+serversideup/s6-overlay:{{flavor}}-{{version}}
 ```
 For example... If I wanted to run **Ubuntu 20.04**, I would use this image:
 ```sh
-serversideup/docker-baseimage-s6-overlay-ubuntu:20.04
+serversideup/s6-overlay:ubuntu-20.04
 ```
 
 ### Updates
