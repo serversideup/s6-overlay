@@ -1,25 +1,17 @@
-# Special thanks to @shinsenter for teaching me cool things with Docker & Bash
-
 ARG BASE_OS_IMAGE=ubuntu:22.04
 
-
-#############################
-# Build stage
-#############################
-
+# build image
 FROM ${BASE_OS_IMAGE} as build
 
-# Configure s6 overlay setings
 ARG S6_DIR=/opt/s6/
 ARG S6_SRC_DEP="xz-utils wget"
 ARG S6_SRC_URL="https://github.com/just-containers/s6-overlay/releases/download"
 ARG S6_VERSION="v3.1.2.1"
 
-# Set environment variables
 ENV DEBIAN_FRONTEND="noninteractive" \
     S6_KEEP_ENV=1
 
-# Install S6 overlay
+# install S6 Overlay
 RUN mkdir -p $S6_DIR; \
     apt-get update; \
     apt-get install -yq $S6_SRC_DEP --no-install-recommends --no-install-suggests; \
@@ -44,10 +36,7 @@ RUN mkdir -p $S6_DIR; \
         && untar ${S6_SRC_URL}/${S6_VERSION}/s6-overlay-noarch.tar.xz \
         && untar ${S6_SRC_URL}/${S6_VERSION}/s6-overlay-${S6_ARCH}.tar.xz
 
-#############################
-# Main image
-#############################
-
+# main image
 FROM ${BASE_OS_IMAGE}
 LABEL maintainer="@jaydrogers"
 
