@@ -1,7 +1,7 @@
-ARG BASE_OS_IMAGE=ubuntu:22.04
+ARG BASE_IMAGE=ubuntu:22.04
 
 # build image
-FROM ${BASE_OS_IMAGE} as build
+FROM ${BASE_IMAGE} as build
 
 ARG S6_DIR=/opt/s6/
 ARG S6_SRC_DEP="xz-utils wget"
@@ -37,7 +37,7 @@ RUN mkdir -p $S6_DIR; \
         && untar ${S6_SRC_URL}/${S6_VERSION}/s6-overlay-${S6_ARCH}.tar.xz
 
 # main image
-FROM ${BASE_OS_IMAGE}
+FROM ${BASE_IMAGE}
 LABEL maintainer="@jaydrogers"
 
 ENV DEBIAN_FRONTEND="noninteractive" \
