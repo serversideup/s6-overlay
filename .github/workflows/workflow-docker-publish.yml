@@ -56,4 +56,4 @@ jobs:
             BASE_OS_IMAGE=${{ matrix.linux-flavor }}:${{ matrix.version }}
           pull: true
           push: true
-          tags: "serversideup/docker-baseimage-s6-overlay-ubuntu:${{ inputs.tag-prefix}}${{ matrix.version }}"
+          tags: "serversideup/s6-overlay:${{ inputs.tag-prefix}}${{ matrix.linux-flavor }}-${{ matrix.version }}"
