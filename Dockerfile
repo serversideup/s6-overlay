@@ -2,10 +2,15 @@
 
 ARG BASE_OS_IMAGE=ubuntu:22.04
 
-FROM ${BASE_OS_IMAGE}
-LABEL maintainer="@jaydrogers"
+
+#############################
+# Build stage
+#############################
+
+FROM ${BASE_OS_IMAGE} as build
 
 # Configure s6 overlay setings
+ARG S6_DIR=/opt/s6/
 ARG S6_SRC_DEP="xz-utils wget"
 ARG S6_SRC_URL="https://github.com/just-containers/s6-overlay/releases/download"
 ARG S6_VERSION="v3.1.2.1"
@@ -32,11 +37,23 @@ RUN mkdir -p $S6_DIR; \
     esac; \
     untar (){ \
         echo "⏬ Downloading $1"; \
-        wget --no-check-certificate -O- $1 | tar Jxp -C /; \
+        wget --no-check-certificate -O- $1 | tar Jxp -C $S6_DIR; \
     }; \
     \
     echo "⬇️ Downloading s6 overlay:${S6_ARCH}-${S6_VERSION} for ${SYS_ARCH}" \
         && untar ${S6_SRC_URL}/${S6_VERSION}/s6-overlay-noarch.tar.xz \
         && untar ${S6_SRC_URL}/${S6_VERSION}/s6-overlay-${S6_ARCH}.tar.xz
+
+#############################
+# Main image
+#############################
+
+FROM ${BASE_OS_IMAGE}
+LABEL maintainer="@jaydrogers"
+
+ENV DEBIAN_FRONTEND="noninteractive" \
+    S6_KEEP_ENV=1
+
+COPY --from=build /opt/s6/ /
 
 ENTRYPOINT ["/init"]
