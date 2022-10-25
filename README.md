@@ -32,9 +32,7 @@ All of our software is free an open to the world. None of this can be brought to
 </a>
 
 #### Individual Supporters
-<p align="center">
-		<a href="https://github.com/sponsors/serversideup"><img src="https://521public.s3.amazonaws.com/serversideup/sponsors/sponsor-empty-state.png" alt="Sponsors"></a>
-</p>
+<!-- supporters --><!-- supporters -->
 
 # Available Docker Images
 This is a list of the docker images this repository creates:
