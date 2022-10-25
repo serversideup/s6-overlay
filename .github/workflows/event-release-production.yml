@@ -1,0 +1,38 @@
+name: Docker Publish (Production Images)
+
+on:
+  # When changes are pushed to the "main" branch, run it
+  push:
+    branches:
+      - main
+
+  # Run every week at 0800 UTC to update the images
+  schedule:
+    - cron: '0 8 * * 0'
+
+jobs:
+  build:
+    uses: ./.github/workflows/workflow-docker-publish.yml
+    with:
+      tag-prefix: ''
+    secrets: inherit
+  
+  update_container_readme:
+    runs-on: ubuntu-latest
+    name: Push README to Docker Hub
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: push README to Dockerhub
+        uses: christian-korneck/update-container-description-action@v1
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_HUB_README_USERNAME }}
+          DOCKER_PASS: ${{ secrets.DOCKER_HUB_README_PASSWORD }}
+        with:
+          destination_container_repo: serversideup/s6-overlay
+          provider: dockerhub
+          short_description: 'Base image for projects that need S6 Overlay'
+          readme_file: 'README.md'
