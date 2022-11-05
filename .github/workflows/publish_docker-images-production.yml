@@ -12,6 +12,7 @@ jobs:
     uses: ./.github/workflows/service_docker-build-and-publish.yml
     with:
       tag-prefix: ''
+      checkout-type: latest-stable
     secrets: inherit
   
   update_container_readme:
