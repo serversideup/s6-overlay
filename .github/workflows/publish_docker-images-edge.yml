@@ -10,7 +10,8 @@ env:
 
 jobs:
   build:
-    uses: ./.github/workflows/workflow-docker-publish.yml
+    uses: ./.github/workflows/service_docker-build-and-publish.yml
     with:
       tag-prefix: 'edge-${{ env.PR_NUMBER }}-'
+      checkout-type: branch
     secrets: inherit

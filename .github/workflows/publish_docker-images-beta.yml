@@ -1,0 +1,16 @@
+name: Docker Publish (Beta Images)
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 8 * * 6'
+
+jobs:
+  build:
+    uses: ./.github/workflows/service_docker-build-and-publish.yml
+    with:
+      tag-prefix: 'beta-'
+      checkout-type: branch
+    secrets: inherit
