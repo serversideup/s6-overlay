@@ -77,12 +77,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          build-args: |
-            UPSTREAM_CHANNEL=${{ inputs.upstream-channel-prefix }}
-            BASE_OS_FLAVOR=${{ inputs.base-os-flavor }}
-            BASE_OS_VERSION=${{ inputs.base-os-version }}
-            PHP_VERSION=${{ matrix.php-version }}
-          context: src/${{ inputs.php-variation }}/.
+          context: .
           platforms: |
             linux/amd64
             linux/arm/v7
