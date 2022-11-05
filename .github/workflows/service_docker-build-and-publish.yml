@@ -4,6 +4,9 @@ on:
       tag-prefix:
         required: true
         type: string
+      checkout-type:
+        required: true
+        type: string
 
 jobs:
   docker-publish:
