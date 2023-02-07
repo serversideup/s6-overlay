@@ -23,7 +23,6 @@ RUN mkdir -p $S6_DIR; \
         arm*    ) export S6_ARCH='arm'     ;; \
         i4*     ) export S6_ARCH='i486'    ;; \
         i6*     ) export S6_ARCH='i686'    ;; \
-        riscv64 ) export S6_ARCH='riscv64' ;; \
         s390*   ) export S6_ARCH='s390x'   ;; \
         *       ) export S6_ARCH='x86_64'  ;; \
     esac; \
