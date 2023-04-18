@@ -97,7 +97,7 @@ jobs:
             linux/ppc64le
             linux/s390x
           build-args: |
-            BASE_OS_IMAGE=${{ matrix.linux-flavor }}:${{ matrix.version }}
+            BASE_IMAGE=${{ matrix.linux-flavor }}:${{ matrix.version }}
           pull: true
           push: true
           tags: ${{ env.DOCKER_TAGS }}
