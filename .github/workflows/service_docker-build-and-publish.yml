@@ -11,12 +11,11 @@ on:
 jobs:
   docker-publish:
     runs-on: ubuntu-22.04
-
+    env:
+      LATEST_UBUNTU_VERSION: "22.04"
     strategy:
       # We want to limit the number of jobs to the number of versions that we're offering (since we want the dependency order to be built correctly)
       max-parallel: 2
-      env:
-        LATEST_UBUNTU_VERSION: "22.04"
       matrix:
         linux-flavor:
           - ubuntu
@@ -85,7 +84,7 @@ jobs:
 
       - name: "🚀 Set docker tags: Latest Ubuntu Release"
         if: ${{ matrix.version == env.LATEST_UBUNTU_VERSION && inputs.checkout-type == 'latest-stable' }} 
-        run: echo "DOCKER_TAGS=serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}, serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}-repo-${{ steps.latest-stable-version.outputs.LATEST_STABLE_VERSION }}, serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}-${{ env.S6_OVERLAY_VERSION }}, serversideup/s6-overlay:${{ env.S6_OVERLAY_VERSION }}" >> $GITHUB_ENV
+        run: echo "DOCKER_TAGS=serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}, serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}-repo-${{ steps.latest-stable-version.outputs.LATEST_STABLE_VERSION }}, serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}-${{ env.S6_OVERLAY_VERSION }}, serversideup/s6-overlay:${{ env.S6_OVERLAY_VERSION }}, serversideup/s6-overlay:latest" >> $GITHUB_ENV
 
       - name: Build and push
         uses: docker/build-push-action@v3
