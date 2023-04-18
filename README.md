@@ -34,11 +34,21 @@ All of our software is free an open to the world. None of this can be brought to
 # Available Docker Images
 This is a list of the docker images this repository creates:
 
+To make it easy for you, there are also other tags available to give you the best experience:
+| 🏷️ Tag                                      | 👇 Example              | 📖 More Info      |
+|---------------------------------------------|-------------------------|---------------|
+| **Operating System Version**                | `ubuntu-22.04`                | Select your operating system version with the latest version of S6 Overlay. |
+| **Operating System Version + S6 Version**   | `ubuntu-22.04-v3.1.4.2`       | Select your operating system version and version of S6 Overlay |
+| **S6 Overlay Version**                      | `v3.1.4.2`                    | Use the latest operating system at the time, but a specific version of S6 overlay |
+| **Latest**                                  | `latest`                      | Use the latest version of Ubuntu and S6 Overlay |
+
+### Other options
+Here are a few examples. We also have beta images and "edge" images for pull requests.
+
 | ⚙️ Operating System | 🎁 Version |
 |------------------|--------------|
 | Ubuntu 20.04      | [ubuntu-20.04](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=20.04), [beta-ubuntu-20.04](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=beta-20.04), [edge-{{PR number}}](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=edge)  |
 | Ubuntu 22.04      | [ubuntu-22.04](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=22.04), [beta-ubuntu-22.04](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=beta-22.04), [edge-{{PR number}}](https://hub.docker.com/r/serversideup/s6-overlay/tags?page=1&ordering=last_updated&name=edge)  |
-
 
 # What is S6 Overlay?
 [S6 Overlay](https://github.com/just-containers/s6-overlay) is a process supervisor that allows you to make any app disposable and repeatable within one container, even if you need two processes to run it (like PHP).
@@ -46,7 +56,7 @@ This is a list of the docker images this repository creates:
 Instead of running [Supervisor](https://github.com/Supervisor/supervisor) inside of your container, S6 Overlay was built specifically for the lifecycle of containers -- giving you a more accurate way of bringing containers down and monitoring their health.
 
 # Aren't you only supposed to run one process per container?
-In a perfect world, yes. But this isn't a perfect world. See a great explanation called ["The Docker Way" by the S6 Overlay](https://github.com/just-containers/s6-overlay#the-docker-way) team for an excellent explaination.
+In a perfect world, yes. But this isn't a perfect world. See a great explanation called ["The Docker Way" by the S6 Overlay](https://github.com/just-containers/s6-overlay#the-docker-way) team for an excellent explanation.
 
 ### Usage
 Simply use this image name pattern in any of your projects:
