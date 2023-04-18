@@ -78,7 +78,7 @@ jobs:
       
       - name: "👨‍🔬 Set docker tags: Non-Release "
         if: inputs.checkout-type == 'branch'
-        run: echo "DOCKER_TAGS=serversideup/s6-overlay:${{ inputs.tag-prefix}}${{ matrix.linux-flavor }}-${{ matrix.version }}" >> $GITHUB_ENV
+        run: echo "DOCKER_TAGS=serversideup/s6-overlay:${{ inputs.tag-prefix}}${{ matrix.linux-flavor }}-${{ matrix.version }}, serversideup/s6-overlay:${{ inputs.tag-prefix}}${{ matrix.linux-flavor }}-${{ matrix.version }}-${{ env.S6_OVERLAY_VERSION }}" >> $GITHUB_ENV
 
       - name: "🚀 Set docker tags: Other Ubuntu Release"
         if: ${{ matrix.version != env.LATEST_UBUNTU_VERSION && inputs.checkout-type == 'latest-stable' }} 
