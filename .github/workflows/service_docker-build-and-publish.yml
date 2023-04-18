@@ -73,7 +73,6 @@ jobs:
 
       - name: "⚡️ Get the S6 version from the version file"
         run: |
-          ls -al
           file_contents=$(cat ./s6-overlay_version.txt)
           echo "S6_OVERLAY_VERSION=$file_contents" >> $GITHUB_ENV
       
