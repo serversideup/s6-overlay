@@ -11,15 +11,18 @@ on:
 jobs:
   docker-publish:
     runs-on: ubuntu-22.04
+
     strategy:
       # We want to limit the number of jobs to the number of versions that we're offering (since we want the dependency order to be built correctly)
       max-parallel: 2
+      env:
+        LATEST_UBUNTU_VERSION: "22.04"
       matrix:
         linux-flavor:
           - ubuntu
         version: 
           - "20.04"
-          - "22.04"
+          - ${{ env.LATEST_UBUNTU_VERSION }}
     steps:
       ##
       # Checkout branch (for push deployments)
@@ -68,14 +71,21 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+
+      - name: "⚡️ Get the S6 version from the version file"
+        run: echo "S6_OVERLAY_VERSION=$(./s6-overlay_version.txt)" >> $GITHUB_ENV
       
       - name: "👨‍🔬 Set docker tags: Non-Release "
         if: inputs.checkout-type == 'branch'
         run: echo "DOCKER_TAGS=serversideup/s6-overlay:${{ inputs.tag-prefix}}${{ matrix.linux-flavor }}-${{ matrix.version }}" >> $GITHUB_ENV
 
-      - name: "🚀 Set docker tags: Release"
-        if: inputs.checkout-type == 'latest-stable'
-        run: echo "DOCKER_TAGS=serversideup/s6-overlay:${{ inputs.tag-prefix}}${{ matrix.linux-flavor }}-${{ matrix.version }}, serversideup/s6-overlay:${{ inputs.tag-prefix}}${{ matrix.linux-flavor }}-${{ matrix.version }}-${{ steps.latest-stable-version.outputs.LATEST_STABLE_VERSION }}" >> $GITHUB_ENV
+      - name: "🚀 Set docker tags: Other Ubuntu Release"
+        if: ${{ matrix.version != env.LATEST_UBUNTU_VERSION && inputs.checkout-type == 'latest-stable' }} 
+        run: echo "DOCKER_TAGS=serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}, serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}-repo-${{ steps.latest-stable-version.outputs.LATEST_STABLE_VERSION }}, serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}-${{ env.S6_OVERLAY_VERSION }}" >> $GITHUB_ENV
+
+      - name: "🚀 Set docker tags: Latest Ubuntu Release"
+        if: ${{ matrix.version == env.LATEST_UBUNTU_VERSION && inputs.checkout-type == 'latest-stable' }} 
+        run: echo "DOCKER_TAGS=serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}, serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}-repo-${{ steps.latest-stable-version.outputs.LATEST_STABLE_VERSION }}, serversideup/s6-overlay:${{ matrix.linux-flavor }}-${{ matrix.version }}-${{ env.S6_OVERLAY_VERSION }}, serversideup/s6-overlay:${{ env.S6_OVERLAY_VERSION }}" >> $GITHUB_ENV
 
       - name: Build and push
         uses: docker/build-push-action@v3

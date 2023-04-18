@@ -6,13 +6,13 @@ FROM ${BASE_IMAGE} as build
 ARG S6_DIR=/opt/s6/
 ARG S6_SRC_DEP="xz-utils wget"
 ARG S6_SRC_URL="https://github.com/just-containers/s6-overlay/releases/download"
-ARG S6_VERSION="v3.1.2.1"
 
 ENV DEBIAN_FRONTEND="noninteractive" \
     S6_KEEP_ENV=1
 
 # install S6 Overlay
-RUN mkdir -p $S6_DIR; \
+RUN S6_VERSION=$(cat s6-overlay_version.txt); \
+    mkdir -p $S6_DIR; \
     apt-get update; \
     apt-get install -yq $S6_SRC_DEP --no-install-recommends --no-install-suggests; \
     export SYS_ARCH=$(uname -m); \
