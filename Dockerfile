@@ -11,7 +11,9 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     S6_KEEP_ENV=1
 
 # install S6 Overlay
-RUN S6_VERSION=$(cat s6-overlay_version.txt); \
+COPY s6-overlay_version.txt /tmp/s6-overlay_version.txt
+
+RUN S6_VERSION=$(cat /tmp/s6-overlay_version.txt); \
     mkdir -p $S6_DIR; \
     apt-get update; \
     apt-get install -yq $S6_SRC_DEP --no-install-recommends --no-install-suggests; \
